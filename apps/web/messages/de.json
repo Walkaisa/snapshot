@@ -1,0 +1,947 @@
+{
+	"app": {
+		"name": "Snapshot",
+		"tagline": "Selbstgehostete Medien-Uploads"
+	},
+	"nav": {
+		"groups": {
+			"content": "Inhalte",
+			"settings": "Einstellungen",
+			"integrations": "Integrationen",
+			"account": "Konto",
+			"system": "System"
+		},
+		"overview": "Übersicht",
+		"gallery": "Galerie",
+		"links": "Links",
+		"uploads": "Uploads",
+		"shortener": "Shortener",
+		"sharex": "ShareX",
+		"apiKey": "API-Key",
+		"profile": "Profil",
+		"security": "Sicherheit",
+		"appearance": "Darstellung",
+		"breadcrumb": "Pfadnavigation",
+		"rateLimit": "Rate-Limit",
+		"subtitle": {
+			"overview": "Deine Instanz auf einen Blick",
+			"gallery": "Durchsuche alle deine Uploads",
+			"links": "Kurzlinks erstellen und verwalten",
+			"uploads": "Wie Uploads angenommen, adressiert und geteilt werden",
+			"shortener": "Wie Kurzlinks adressiert werden",
+			"sharex": "ShareX-Konfiguration herunterladen",
+			"apiKey": "Ein Key authentifiziert jeden Upload-Client",
+			"profile": "Dein Benutzername und wie du auf geteilten Links erscheinst",
+			"security": "Dein Passwort und wo dein Konto angemeldet ist",
+			"appearance": "Theme und Sprache",
+			"rateLimit": "Schreibende API-Anfragen pro Client drosseln",
+			"audit": "Alles, was die Instanz protokolliert hat"
+		},
+		"audit": "Audit-Log"
+	},
+	"common": {
+		"language": "Sprache",
+		"logout": "Abmelden",
+		"loading": "Wird geladen…",
+		"menu": "Menü",
+		"cancel": "Abbrechen",
+		"remove": "Entfernen",
+		"default": "Standard"
+	},
+	"overview": {
+		"cards": {
+			"version": "Version",
+			"versionUnknown": "N/A",
+			"uploads": "Uploads",
+			"links": "Kurzlinks",
+			"storage": "Belegter Speicher"
+		},
+		"recent": {
+			"title": "Letzte Aktivitäten",
+			"description": "Neueste Uploads und Kurzlinks dieser Instanz.",
+			"empty": "Noch nichts passiert.",
+			"visits": "{count, plural, =1 {# Aufruf} other {# Aufrufe}}"
+		},
+		"error": "Diese Daten konnten nicht geladen werden.",
+		"retry": "Erneut versuchen",
+		"charts": {
+			"section": {
+				"title": "Aktivität",
+				"description": "Uploads, Speicher und Aufrufe im gewählten Zeitraum."
+			},
+			"range": {
+				"label": "Zeitraum",
+				"days": "{days} Tage"
+			},
+			"comparison": {
+				"none": "0 im Zeitraum davor",
+				"unchanged": "unverändert gegenüber davor",
+				"increase": "{percent} mehr als im Zeitraum davor",
+				"decrease": "{percent} weniger als im Zeitraum davor"
+			},
+			"uploads": {
+				"title": "Upload-Aktivität",
+				"description": "Dateien pro Tag.",
+				"series": "Uploads"
+			},
+			"storage": {
+				"title": "Belegter Speicher",
+				"description": "Wie stark deine Uploads den Speicher füllen.",
+				"series": "Belegt"
+			},
+			"views": {
+				"title": "Aufrufe",
+				"description": "Wie oft deine Uploads und Kurzlinks geöffnet wurden.",
+				"page": "Share-Seite",
+				"raw": "Direktlink",
+				"download": "Download",
+				"link": "Kurzlink"
+			},
+			"formats": {
+				"title": "Speicher nach Format",
+				"description": "Welche Dateitypen den Speicher füllen.",
+				"series": "Speicher",
+				"files": "{count, plural, one {# Datei} other {# Dateien}}",
+				"other": "Sonstige",
+				"empty": "Noch nichts gespeichert."
+			}
+		}
+	},
+	"gallery": {
+		"loadingMore": "Wird geladen…",
+		"noPreview": "Keine Vorschau verfügbar",
+		"card": {
+			"open": "Details zu {filename} öffnen"
+		},
+		"empty": {
+			"title": "Noch keine Uploads",
+			"description": "Lade hier eine hoch oder schicke Dateien über ShareX und die API.",
+			"cta": "ShareX einrichten",
+			"upload": "Datei hochladen"
+		},
+		"details": {
+			"file": "Dateidetails",
+			"id": "Datei-ID",
+			"type": "Typ",
+			"dimensions": "Abmessungen",
+			"size": "Größe",
+			"uploaded": "Hochgeladen",
+			"integrity": "Integrität"
+		},
+		"views": {
+			"title": "Aufrufe",
+			"total": "Gesamt",
+			"page": "Seite",
+			"direct": "Direkt",
+			"download": "Downloads",
+			"error": "Aufruf-Statistiken sind nicht verfügbar."
+		},
+		"actions": {
+			"more": "Weitere Aktionen",
+			"details": "Details anzeigen",
+			"copyLink": "Link kopieren",
+			"copyDirect": "Direktlink kopieren",
+			"open": "Öffnen",
+			"download": "Herunterladen",
+			"delete": "Löschen",
+			"deleted": "Datei gelöscht.",
+			"deleteError": "Datei konnte nicht gelöscht werden.",
+			"copyError": "Konnte nicht in die Zwischenablage kopiert werden.",
+			"linkCopied": "Link in die Zwischenablage kopiert.",
+			"directCopied": "Direktlink in die Zwischenablage kopiert."
+		},
+		"confirmDelete": {
+			"title": "Diese Datei löschen?",
+			"description": "{filename} wird dauerhaft entfernt und der Teil-Link funktioniert nicht mehr."
+		},
+		"count": "{count, plural, =0 {Noch nichts hochgeladen} =1 {# Datei} other {# Dateien}}",
+		"upload": {
+			"action": "Hochladen",
+			"title": "Datei hochladen",
+			"description": "Nur Bilder und Videos — dieselben Regeln wie für deine Upload-Clients.",
+			"submit": "Hochladen",
+			"submitting": "Wird hochgeladen…",
+			"uploading": "Wird hochgeladen",
+			"cancel": "Abbrechen",
+			"clear": "Ausgewählte Datei entfernen",
+			"uploaded": "Als /{id} hochgeladen.",
+			"dropzone": {
+				"title": "Datei hierher ziehen oder auswählen",
+				"hint": "{types} · bis zu {limit}",
+				"loading": "Upload-Regeln werden geladen…"
+			},
+			"fields": {
+				"slug": "Eigener Slug",
+				"slugPlaceholder": "optional",
+				"slugHint": "Leer lassen, um einen zu erzeugen."
+			},
+			"errors": {
+				"required": "Wähle eine Datei zum Hochladen",
+				"type": "Dieser Dateityp ist hier nicht erlaubt — Snapshot speichert Bilder und Videos.",
+				"size": "Diese Datei ist größer als das Limit von {limit}.",
+				"empty": "Diese Datei ist leer.",
+				"slug": "3-64 Buchstaben, Ziffern, Bindestrich oder Unterstrich",
+				"slugTaken": "Dieser Slug ist bereits vergeben",
+				"generic": "Die Datei konnte nicht hochgeladen werden."
+			}
+		}
+	},
+	"audit": {
+		"actions": {
+			"auth": {
+				"setup": "Instanz eingerichtet",
+				"sign_in": "Angemeldet",
+				"sign_in_mfa": "Zweiter Faktor bestätigt",
+				"sign_out": "Abgemeldet",
+				"password_change": "Passwort geändert",
+				"sessions_revoke": "Sitzungen abgemeldet"
+			},
+			"mfa": {
+				"setup": "Zwei-Faktor-Einrichtung gestartet",
+				"setup_cancel": "Zwei-Faktor-Einrichtung abgebrochen",
+				"enable": "Zwei-Faktor aktiviert",
+				"disable": "Zwei-Faktor deaktiviert",
+				"recovery_codes_rotate": "Wiederherstellungscodes neu erzeugt"
+			},
+			"account": {
+				"username_change": "Benutzername geändert",
+				"preferences_update": "Einstellungen aktualisiert"
+			},
+			"config": {
+				"update": "Konfiguration geändert"
+			},
+			"api_key": {
+				"reveal": "API-Schlüssel angezeigt",
+				"rotate": "API-Schlüssel rotiert"
+			},
+			"uploads": {
+				"create": "Datei hochgeladen",
+				"delete": "Datei gelöscht"
+			},
+			"links": {
+				"create": "Kurzlink erstellt",
+				"update": "Kurzlink umgeleitet",
+				"delete": "Kurzlink gelöscht"
+			},
+			"security": {
+				"unauthorized": "Unauthentifizierte Anfrage abgewiesen",
+				"api_key_rejected": "API-Schlüssel abgewiesen",
+				"csrf_rejected": "CSRF-Token abgewiesen",
+				"rate_limited": "Rate-Limit erreicht"
+			},
+			"system": {
+				"startup": "Instanz gestartet",
+				"uploads_reconciled": "Uploads abgeglichen",
+				"audit_pruned": "Audit-Log aufgeräumt",
+				"audit_overflow": "Audit-Einträge verworfen"
+			}
+		},
+		"categories": {
+			"auth": "Anmeldung",
+			"mfa": "Zwei-Faktor",
+			"account": "Konto",
+			"config": "Konfiguration",
+			"api_key": "API-Schlüssel",
+			"uploads": "Uploads",
+			"links": "Kurzlinks",
+			"security": "Sicherheit",
+			"system": "System"
+		},
+		"severities": {
+			"info": "Info",
+			"notice": "Hinweis",
+			"warning": "Warnung",
+			"error": "Fehler",
+			"critical": "Kritisch"
+		},
+		"outcomes": {
+			"success": "Erfolgreich",
+			"failure": "Fehlgeschlagen"
+		},
+		"actors": {
+			"dashboard": "Dashboard",
+			"api_key": "API-Schlüssel",
+			"system": "System",
+			"anonymous": "Anonym"
+		},
+		"targets": {
+			"upload": "Upload",
+			"link": "Kurzlink",
+			"config": "Konfiguration",
+			"session": "Sitzung",
+			"admin": "Konto",
+			"api_key": "API-Schlüssel",
+			"instance": "Instanz"
+		},
+		"fields": {
+			"filename": "Datei",
+			"mimeType": "Inhaltstyp",
+			"size": "Größe",
+			"sizeBytes": "Größe in Bytes",
+			"dimensions": "Abmessungen",
+			"pageUrl": "Teilen-Seite",
+			"slug": "Slug",
+			"shortUrl": "Kurzlink",
+			"target": "Ziel",
+			"host": "Ziel-Host",
+			"theme": "Design",
+			"locale": "Sprache",
+			"username": "Benutzername",
+			"revoked": "Abgemeldete Sitzungen",
+			"imported": "Importierte Dateien",
+			"orphans": "Zeilen ohne Datei",
+			"deleted": "Gelöschte Einträge",
+			"dropped": "Verworfene Einträge",
+			"retentionDays": "Aufbewahrung in Tagen",
+			"limit": "Limit",
+			"windowSeconds": "Fenster in Sekunden",
+			"retryAfter": "Erneut nach (s)",
+			"version": "Version",
+			"environment": "Umgebung",
+			"node": "Node.js"
+		},
+		"search": "Audit-Log durchsuchen",
+		"refresh": "Aktualisieren",
+		"searchPlaceholder": "Aktion, Ziel, Pfad suchen…",
+		"count": "{count, plural, =0 {Keine Ereignisse} =1 {# Ereignis} other {# Ereignisse}}",
+		"retentionMenu": {
+			"title": "Einträge aufbewahren",
+			"label": "{days, plural, =1 {# Tag} other {# Tage}} Aufbewahrung",
+			"option": "{days, plural, =1 {# Tag} other {# Tage}}",
+			"saved": "Audit-Einträge werden jetzt {days} Tage aufbewahrt.",
+			"error": "Die Aufbewahrung konnte nicht geändert werden."
+		},
+		"oldest": "Ältester Eintrag: {date}",
+		"loadMore": "Mehr laden",
+		"loadingMore": "Wird geladen…",
+		"range": {
+			"label": "Zeitraum",
+			"options": {
+				"24": "24 Std.",
+				"168": "7 Tage",
+				"720": "30 Tage",
+				"0": "Alle"
+			}
+		},
+		"filters": {
+			"label": "Filter",
+			"reset": "Zurücksetzen",
+			"severities": "Schweregrad",
+			"categories": "Bereich",
+			"outcomes": "Ergebnis",
+			"actors": "Quelle"
+		},
+		"details": {
+			"occurredAt": "Zeitstempel",
+			"category": "Bereich",
+			"severity": "Schweregrad",
+			"outcome": "Ergebnis",
+			"actor": "Quelle",
+			"target": "Ziel",
+			"ipAddress": "IP-Adresse",
+			"client": "Client",
+			"device": "{browser} unter {os}",
+			"route": "Route",
+			"duration": "Dauer",
+			"errorCode": "Fehlercode",
+			"requestId": "Anfrage-ID",
+			"metadata": "Rohdaten",
+			"unknown": "Unbekannt",
+			"changed": "Was sich geändert hat"
+		},
+		"empty": {
+			"none": {
+				"title": "Noch nichts protokolliert",
+				"description": "Jede Anmeldung, jeder Upload, jede Änderung und jede abgewiesene Anfrage landet hier."
+			},
+			"noMatches": {
+				"title": "Nichts gefunden",
+				"description": "Kein Ereignis passt zu diesen Filtern. Erweitere den Zeitraum oder entferne einen Filter."
+			}
+		}
+	},
+	"ids": {
+		"availability": {
+			"checking": "Verfügbarkeit wird geprüft…",
+			"available": "Slug ist frei",
+			"taken": {
+				"link": "Ein anderer Kurzlink nutzt diesen Slug bereits",
+				"upload": "Ein Upload nutzt diese ID bereits",
+				"reserved": "Dieser Slug ist vom Dashboard belegt"
+			}
+		}
+	},
+	"links": {
+		"loadMore": "Mehr laden",
+		"loadingMore": "Wird geladen…",
+		"columns": {
+			"visits": "Aufrufe"
+		},
+		"create": {
+			"title": "Link kürzen",
+			"description": "Richte einen kurzen, merkbaren Slug auf eine beliebige http(s)-Adresse.",
+			"submit": "Kürzen",
+			"submitting": "Wird gekürzt…",
+			"created": "Kurzlink /{slug} erstellt.",
+			"fields": {
+				"url": "Ziel-URL",
+				"urlPlaceholder": "https://example.com/ein/sehr/langer/link",
+				"slug": "Eigener Slug",
+				"slugPlaceholder": "optional",
+				"slugHint": "Leer lassen, um einen zu erzeugen."
+			},
+			"errors": {
+				"urlRequired": "Gib die URL ein, die gekürzt werden soll",
+				"url": "Gib eine vollständige http:// oder https:// URL ein",
+				"slug": "Buchstaben, Ziffern, Bindestrich und Unterstrich; Anfang und Ende müssen Buchstabe oder Ziffer sein",
+				"slugTaken": "Dieser Slug ist bereits vergeben",
+				"generic": "Der Kurzlink konnte nicht erstellt werden."
+			},
+			"action": "Neuer Kurzlink",
+			"cancel": "Abbrechen"
+		},
+		"edit": {
+			"title": "Ziel ändern",
+			"description": "Besucher von /{slug} werden ab der nächsten Anfrage an die neue Adresse geschickt.",
+			"submit": "Speichern",
+			"saving": "Wird gespeichert…",
+			"cancel": "Abbrechen",
+			"saved": "Ziel aktualisiert.",
+			"fields": {
+				"url": "Ziel-URL"
+			},
+			"errors": {
+				"urlRequired": "Gib die URL ein, auf die verwiesen werden soll",
+				"url": "Gib eine vollständige http:// oder https:// URL ein",
+				"generic": "Der Kurzlink konnte nicht aktualisiert werden."
+			}
+		},
+		"actions": {
+			"more": "Weitere Aktionen",
+			"copy": "Kurzlink kopieren",
+			"copied": "Kurzlink in die Zwischenablage kopiert.",
+			"copyError": "Kopieren in die Zwischenablage fehlgeschlagen.",
+			"openTarget": "Ziel öffnen",
+			"edit": "Ziel ändern",
+			"delete": "Löschen",
+			"deleted": "Kurzlink gelöscht.",
+			"deleteError": "Der Kurzlink konnte nicht gelöscht werden."
+		},
+		"empty": {
+			"none": {
+				"title": "Noch keine Kurzlinks",
+				"description": "Kürze hier eine URL oder lege welche aus einem beliebigen Dienst über die API an.",
+				"action": "Link kürzen"
+			},
+			"noMatches": {
+				"title": "Nichts gefunden",
+				"description": "Kein Kurzlink hat diesen Slug oder dieses Ziel. Versuch eine kürzere Suche."
+			}
+		},
+		"confirmDelete": {
+			"title": "Diesen Kurzlink löschen?",
+			"description": "/{slug} funktioniert sofort nicht mehr und die Aufrufhistorie wird entfernt."
+		},
+		"list": {
+			"description": "{count, plural, =0 {Noch nichts gekürzt} =1 {# Kurzlink} other {# Kurzlinks}}",
+			"search": "Kurzlinks durchsuchen",
+			"searchPlaceholder": "Slug oder Ziel suchen…",
+			"sort": {
+				"label": "Sortieren nach",
+				"options": {
+					"newest": "Neueste zuerst",
+					"oldest": "Älteste zuerst",
+					"visits": "Meiste Aufrufe",
+					"slug": "Slug A–Z",
+					"target": "Ziel A–Z"
+				}
+			}
+		}
+	},
+	"notFound": {
+		"title": "Seite nicht gefunden",
+		"description": "Die gesuchte Seite existiert nicht.",
+		"back": "Zurück zur Übersicht"
+	},
+	"auth": {
+		"setup": {
+			"title": "Willkommen bei Snapshot",
+			"description": "Lege dein Administrator-Konto an, um loszulegen.",
+			"submit": "Konto erstellen",
+			"submitting": "Wird erstellt…"
+		},
+		"signIn": {
+			"title": "Anmelden",
+			"description": "Gib deine Zugangsdaten ein, um zum Dashboard zu gelangen.",
+			"submit": "Anmelden",
+			"submitting": "Wird angemeldet…"
+		},
+		"signOut": {
+			"action": "Abmelden",
+			"loading": "Wird abgemeldet…"
+		},
+		"fields": {
+			"username": "Benutzername",
+			"password": "Passwort",
+			"confirmPassword": "Passwort bestätigen"
+		},
+		"password": {
+			"strength": "Stärke",
+			"level": {
+				"weak": "Schwach",
+				"fair": "Mäßig",
+				"good": "Gut",
+				"strong": "Stark"
+			},
+			"requirement": {
+				"length": "Mindestens 8 Zeichen",
+				"lowercase": "Ein Kleinbuchstabe",
+				"uppercase": "Ein Großbuchstabe",
+				"number": "Eine Ziffer",
+				"symbol": "Ein Sonderzeichen"
+			}
+		},
+		"errors": {
+			"username": "1–64 Zeichen aus Buchstaben, Ziffern, Punkt, Unterstrich oder Bindestrich; beginnend mit Buchstabe oder Ziffer",
+			"passwordShort": "Passwort muss mindestens 8 Zeichen lang sein",
+			"passwordLong": "Passwort ist zu lang",
+			"passwordMismatch": "Passwörter stimmen nicht überein",
+			"required": "Erforderlich",
+			"invalidCredentials": "Ungültiger Benutzername oder Passwort",
+			"throttledCountdown": "Zu viele Versuche — erneut in {seconds}s",
+			"alreadyInitialized": "Setup wurde bereits abgeschlossen",
+			"generic": "Etwas ist schiefgelaufen. Bitte erneut versuchen."
+		},
+		"mfa": {
+			"title": "Zwei-Faktor-Authentifizierung",
+			"description": "Gib den Code aus deiner Authenticator-App ein, um die Anmeldung abzuschließen.",
+			"hint": "6-stelliger Code, wechselt alle 30 Sekunden.",
+			"recoveryHint": "Einer der Wiederherstellungscodes, die du beim Aktivieren gespeichert hast. Jeder funktioniert genau einmal.",
+			"verify": "Bestätigen",
+			"verifying": "Wird geprüft…",
+			"or": "oder",
+			"useRecoveryCode": "Wiederherstellungscode verwenden",
+			"useAuthenticator": "Authenticator-App verwenden",
+			"fields": {
+				"code": "Authentifizierungscode",
+				"recoveryCode": "Wiederherstellungscode"
+			},
+			"errors": {
+				"invalidCode": "Dieser Code ist ungültig. Prüfe deine Authenticator-App und versuche es erneut.",
+				"invalidRecoveryCode": "Dieser Wiederherstellungscode ist ungültig oder wurde bereits benutzt.",
+				"throttled": "Zu viele Versuche. Warte eine Minute, bevor du es erneut versuchst."
+			}
+		}
+	},
+	"settings": {
+		"saveBar": {
+			"unsaved": "Du hast ungespeicherte Änderungen",
+			"reset": "Zurücksetzen",
+			"save": "Änderungen speichern",
+			"saving": "Wird gespeichert…"
+		},
+		"ids": {
+			"units": {
+				"chars": "Zeichen",
+				"times": "×"
+			},
+			"kinds": {
+				"upload": {
+					"title": "Slug-Generator",
+					"description": "Wie der Slug erzeugt wird, der einen Upload adressiert.",
+					"lengthLabel": "Länge des Slugs",
+					"lengthHint": "Der Slug im Share-Link, 3–64 Zeichen.",
+					"range": "Muss zwischen 3 und 64 liegen"
+				},
+				"link": {
+					"title": "Slug-Generator",
+					"description": "Wie der Slug eines automatisch erzeugten Kurzlinks entsteht.",
+					"lengthLabel": "Länge des Slugs",
+					"lengthHint": "Nur für erzeugte Slugs, 3–64 Zeichen. Ein eigener Slug darf beliebig lang sein.",
+					"range": "Muss zwischen 3 und 64 liegen"
+				}
+			},
+			"alphabet": {
+				"mode": {
+					"title": "Zusammenstellung",
+					"description": "Fertige Gruppen kombinieren oder das Alphabet selbst eintippen.",
+					"charsets": {
+						"title": "Vordefinierte Sätze",
+						"description": "Hake die Gruppen an, die du kombinieren willst."
+					},
+					"custom": {
+						"title": "Eigene Zeichen",
+						"description": "Tippe das genaue Alphabet selbst ein."
+					}
+				},
+				"charsets": {
+					"title": "Zeichengruppen",
+					"description": "Jede angehakte Gruppe wandert vollständig ins Alphabet.",
+					"lowercase": "Kleinbuchstaben",
+					"uppercase": "Großbuchstaben",
+					"digits": "Ziffern",
+					"symbols": "Sonderzeichen"
+				},
+				"custom": {
+					"title": "Eigenes Alphabet",
+					"description": "Buchstaben, Ziffern, Bindestrich und Unterstrich. Doppelte Zeichen werden ignoriert.",
+					"label": "Erlaubte Zeichen",
+					"placeholder": "abcdefghjkmnpqrstuvwxyz23456789"
+				}
+			},
+			"minimums": {
+				"title": "Garantierte Zeichen",
+				"description": "Wie oft eine Klasse in jeder erzeugten ID vorkommen muss. Nur editierbar, solange die Klasse Teil des Alphabets ist.",
+				"minDigits": {
+					"label": "Ziffern mindestens",
+					"hint": "Jede ID enthält mindestens so viele Ziffern.",
+					"unavailable": "Nimm die Ziffern ins Alphabet auf, um sie zu verlangen."
+				},
+				"minSymbols": {
+					"label": "Sonderzeichen mindestens",
+					"hint": "Jede ID enthält mindestens so viele Sonderzeichen.",
+					"unavailable": "Nimm die Sonderzeichen ins Alphabet auf, um sie zu verlangen."
+				}
+			},
+			"length": {
+				"title": "Länge",
+				"description": "Mehr Zeichen heißt mehr mögliche IDs — also mehr Spielraum, bevor sich zwei zufällig gleichen.",
+				"slider": "Schieberegler für die Länge"
+			},
+			"capacity": {
+				"example": "Beispiel",
+				"exampleCaption": "gezogen aus {count} Zeichen",
+				"reroll": "Neues Beispiel ziehen",
+				"impossible": "Diese Kombination kann keine ID erzeugen.",
+				"combinations": {
+					"label": "Mögliche IDs",
+					"caption": "so viele verschiedene IDs gibt es"
+				},
+				"headroom": {
+					"label": "Spielraum",
+					"caption": "IDs, bis eine Ziehung doppelt kommt"
+				},
+				"entropy": "{bits} Bit"
+			},
+			"errors": {
+				"alphabet": "Wähle mindestens 8 verschiedene Zeichen aus A–Z, a–z, 0–9, Bindestrich oder Unterstrich",
+				"minRange": "Muss zwischen 0 und 16 liegen",
+				"tooShort": "Muss mindestens {count} sein, damit die garantierten Zeichen hineinpassen"
+			}
+		},
+		"apiKey": {
+			"label": "API-Key",
+			"description": "Ein Key für die gesamte Instanz — behandle ihn wie ein Passwort.",
+			"usage": "Clients senden ihn als <code>Authorization: Bearer</code>- oder <code>X-API-Key</code>-Header. In der ShareX-Konfiguration steckt er schon drin.",
+			"reveal": "Key anzeigen",
+			"hide": "Key verbergen",
+			"copy": "Key kopieren",
+			"revealError": "Key konnte nicht angezeigt werden.",
+			"copyError": "Key konnte nicht kopiert werden.",
+			"rotate": "Key rotieren",
+			"rotateHint": "Rotieren macht den aktuellen Key sofort ungültig.",
+			"rotated": "API-Key rotiert. Lade deine ShareX-Konfiguration neu herunter und aktualisiere alle weiteren Clients.",
+			"rotateError": "Key konnte nicht rotiert werden.",
+			"confirmTitle": "API-Key rotieren?",
+			"confirmDescription": "Der aktuelle Key funktioniert sofort nicht mehr. Jeder Client, der ihn nutzt — ShareX, Skripte, alles andere — braucht den neuen."
+		},
+		"sharex": {
+			"status": "ShareX-Endpunkt",
+			"statusHint": "Eine fertige ShareX-Konfiguration mit deinem bereits eingetragenen API-Key.",
+			"downloadHint": "Der Download enthält immer deinen aktuellen API-Key.",
+			"download": ".sxcu herunterladen"
+		},
+		"embed": {
+			"title": "Embeds",
+			"description": "Wie ein geteilter Upload in Discord und Co. dargestellt wird.",
+			"enabledHint": "Ausgeschaltet wird ein geteilter Link ohne Vorschau-Tags ausgeliefert.",
+			"configuration": "Konfiguration",
+			"configurationHint": "Woraus jede Vorschau gebaut wird.",
+			"previewHint": "So sieht ein geteilter Upload aus.",
+			"preview": "Vorschau",
+			"disabledHint": "Vorschauen sind deaktiviert — Links werden ohne Embed dargestellt.",
+			"variables": "Vorlagen-Variablen",
+			"saved": "Embed-Einstellungen gespeichert.",
+			"saveError": "Embed-Einstellungen konnten nicht gespeichert werden.",
+			"fields": {
+				"enabled": "Embeds aktivieren",
+				"provider": "Anbietername",
+				"color": "Akzentfarbe",
+				"title": "Titel-Vorlage",
+				"descriptionTemplate": "Beschreibungs-Vorlage",
+				"locale": "Gebietsschema",
+				"timezone": "Zeitzone"
+			},
+			"select": {
+				"localePlaceholder": "Gebietsschema wählen",
+				"localeSearch": "Gebietsschema suchen...",
+				"timezonePlaceholder": "Zeitzone wählen",
+				"timezoneSearch": "Zeitzone suchen...",
+				"empty": "Keine Treffer gefunden."
+			},
+			"errors": {
+				"providerRequired": "Anbietername ist erforderlich",
+				"providerLong": "Anbietername ist zu lang",
+				"color": "Gib eine Hex-Farbe wie #5865F2 ein",
+				"templateVariable": "Unbekannte Variable: {name}",
+				"locale": "Gib ein gültiges Gebietsschema wie en-US ein",
+				"timezone": "Gib eine gültige Zeitzone wie UTC ein"
+			}
+		},
+		"uploads": {
+			"saved": "Upload-Einstellungen gespeichert.",
+			"saveError": "Upload-Einstellungen konnten nicht gespeichert werden.",
+			"limits": {
+				"title": "Upload-Limits",
+				"description": "Wie groß eine einzelne Datei sein darf und wie viel Platz die Instanz insgesamt belegen darf."
+			},
+			"types": {
+				"title": "Erlaubte Dateitypen",
+				"description": "Beschränke Uploads auf bestimmte Endungen oder MIME-Typen."
+			},
+			"fields": {
+				"maxSize": "Max. Dateigröße",
+				"maxSizeHint": "Größere Uploads werden abgelehnt.",
+				"restrictExtensions": "Endungen beschränken",
+				"restrictHint": "Ausgeschaltet wird die eingebaute Standardliste verwendet.",
+				"extensions": "Endungen",
+				"extensionPlaceholder": "Endung hinzufügen (z. B. .png)",
+				"extensionsEmpty": "Noch keine Endungen hinzugefügt.",
+				"restrictMimeTypes": "MIME-Typen beschränken",
+				"restrictMimeHint": "Ausgeschaltet wird die eingebaute Standardliste verwendet.",
+				"mimeTypes": "MIME-Typen",
+				"mimePlaceholder": "MIME-Typ hinzufügen (z. B. image/png)",
+				"mimeEmpty": "Noch keine MIME-Typen hinzugefügt.",
+				"maxStorage": "Speicherlimit",
+				"maxStorageHint": "Ist es erreicht, werden weitere Uploads abgelehnt.",
+				"restrictStorage": "Gesamtspeicher begrenzen",
+				"restrictStorageHint": "Ausgeschaltet wird nur durch die freie Festplatte begrenzt."
+			},
+			"errors": {
+				"sizeMin": "Muss mindestens 1 MB sein",
+				"needExtension": "Füge mindestens eine Endung hinzu oder deaktiviere die Beschränkung",
+				"needMime": "Füge mindestens einen MIME-Typ hinzu oder deaktiviere die Beschränkung",
+				"storageMin": "Muss größer als 0 sein"
+			}
+		},
+		"rateLimit": {
+			"title": "Rate-Limit",
+			"description": "Wie viele schreibende Anfragen ein Client pro Zeitfenster stellen darf — Uploads und neue Kurzlinks.",
+			"appliesLive": "Änderungen gelten sofort für neue Anfragen.",
+			"saved": "Rate-Limit gespeichert.",
+			"saveError": "Rate-Limit konnte nicht gespeichert werden.",
+			"fields": {
+				"enabled": "Rate-Limit aktivieren",
+				"requests": "Anfragen",
+				"window": "Zeitfenster (Sekunden)"
+			},
+			"errors": {
+				"min": "Muss mindestens 1 sein"
+			}
+		},
+		"password": {
+			"title": "Passwort ändern",
+			"description": "Aktualisiere das Administrator-Passwort.",
+			"submit": "Passwort aktualisieren",
+			"submitting": "Wird aktualisiert…",
+			"saved": "Passwort aktualisiert.",
+			"signsOutOthers": "Beim Ändern des Passworts werden alle anderen Sitzungen abgemeldet.",
+			"fields": {
+				"current": "Aktuelles Passwort",
+				"new": "Neues Passwort",
+				"confirm": "Neues Passwort bestätigen"
+			},
+			"errors": {
+				"required": "Erforderlich",
+				"short": "Passwort muss mindestens 12 Zeichen haben",
+				"long": "Passwort ist zu lang",
+				"mismatch": "Passwörter stimmen nicht überein",
+				"currentWrong": "Aktuelles Passwort ist falsch",
+				"generic": "Etwas ist schiefgelaufen. Bitte erneut versuchen."
+			}
+		},
+		"sessions": {
+			"title": "Angemeldete Geräte",
+			"description": "{count, plural, =1 {Derzeit besteht # Browser-Sitzung. Prüfe das Gerät unten und melde es ab, falls du es nicht erkennst.} other {Derzeit bestehen # Browser-Sitzungen. Prüfe die Geräte unten und melde unbekannte Sitzungen ab.}}",
+			"current": "Dieses Gerät",
+			"active": "Angemeldet",
+			"device": "{browser} unter {os}",
+			"lastSeen": "Zuletzt aktiv {time}",
+			"unknownIp": "Unbekannte IP",
+			"unknownAgent": "Unbekanntes Gerät",
+			"columns": {
+				"device": "Gerät",
+				"ip": "IP-Adresse",
+				"lastActive": "Zuletzt aktiv",
+				"status": "Status",
+				"actions": "Aktionen"
+			},
+			"revokeHint": "Alle Sitzungen außer dieser abmelden.",
+			"revokeOthers": "Andere abmelden",
+			"revokeSession": "Sitzung abmelden",
+			"revoked": "{count, plural, =1 {# Sitzung abgemeldet} other {# Sitzungen abgemeldet}}",
+			"revokeError": "Sitzungen konnten nicht abgemeldet werden.",
+			"confirmTitle": "Andere Sitzungen abmelden?",
+			"confirmDescription": "Alle anderen Geräte müssen sich erneut anmelden.",
+			"confirmOneTitle": "Diese Sitzung abmelden?",
+			"confirmOneDescription": "Das Gerät muss sich erneut anmelden."
+		},
+		"profile": {
+			"title": "Benutzername",
+			"description": "Ändere den Benutzernamen, mit dem du dich anmeldest und der in deinen Link-Vorschauen erscheint.",
+			"submit": "Benutzernamen aktualisieren",
+			"submitting": "Wird aktualisiert…",
+			"saved": "Benutzername aktualisiert.",
+			"fields": {
+				"username": "Benutzername",
+				"usernameHint": "Wird für die Anmeldung verwendet und erscheint in deinen Link-Vorschauen.",
+				"currentPassword": "Aktuelles Passwort"
+			},
+			"errors": {
+				"username": "1–64 Zeichen aus Buchstaben, Ziffern, Punkt, Unterstrich oder Bindestrich; beginnend mit Buchstabe oder Ziffer",
+				"currentRequired": "Erforderlich",
+				"currentWrong": "Aktuelles Passwort ist falsch",
+				"generic": "Etwas ist schiefgelaufen. Bitte erneut versuchen."
+			}
+		},
+		"appearance": {
+			"saveError": "Deine Einstellung konnte nicht gespeichert werden.",
+			"theme": {
+				"title": "Theme",
+				"description": "Lege fest, wie das Dashboard aussieht. System folgt deinem Betriebssystem.",
+				"options": {
+					"system": "System",
+					"light": "Hell",
+					"dark": "Dunkel"
+				}
+			},
+			"language": {
+				"title": "Sprache",
+				"description": "Sprache für das gesamte Dashboard.",
+				"options": {
+					"system": "System"
+				},
+				"select": {
+					"placeholder": "Sprache auswählen",
+					"searchPlaceholder": "Sprache suchen...",
+					"empty": "Keine Treffer gefunden."
+				}
+			}
+		},
+		"mfa": {
+			"title": "Zwei-Faktor-Authentifizierung",
+			"description": "Verlange zusätzlich zum Passwort einen zeitbasierten Code aus einer Authenticator-App.",
+			"passwordLabel": "Aktuelles Passwort",
+			"passwordHint": "Bestätige, dass du es bist, bevor du einen Anmeldefaktor änderst.",
+			"enabled": "Zwei-Faktor-Authentifizierung ist aktiv",
+			"disabled": "Zwei-Faktor-Authentifizierung ist deaktiviert",
+			"status": {
+				"title": "Authenticator-App",
+				"enabled": "Aktiv",
+				"disabled": "Nicht aktiv",
+				"addedOn": "Hinzugefügt am {date}",
+				"hint": "Dein Passwort allein meldet dich an."
+			},
+			"actions": {
+				"enable": "Aktivieren",
+				"disable": "Deaktivieren",
+				"rotateCodes": "Neue Wiederherstellungscodes",
+				"cancel": "Abbrechen"
+			},
+			"enroll": {
+				"title": "Zwei-Faktor-Authentifizierung aktivieren",
+				"description": "Scanne den QR-Code mit deiner Authenticator-App und bestätige den angezeigten Code.",
+				"start": "Weiter",
+				"confirm": "Aktivieren",
+				"codeLabel": "Code aus deiner App",
+				"qrLabel": "QR-Code für deine Authenticator-App",
+				"scanHint": "Scanne ihn mit Aegis, 1Password, Bitwarden, Google Authenticator oder einer anderen TOTP-App.",
+				"secretLabel": "Oder diesen Schlüssel manuell eingeben",
+				"copySecret": "Schlüssel kopieren",
+				"copyError": "Schlüssel konnte nicht kopiert werden",
+				"labelLabel": "Name der App",
+				"labelPlaceholder": "Bitwarden",
+				"labelHint": "Damit du sie später wiedererkennst.",
+				"labelDefault": "Authenticator-App"
+			},
+			"recovery": {
+				"title": "Wiederherstellungscodes sichern",
+				"description": "Jeder Code meldet dich einmal an, falls du deine Authenticator-App verlierst. Sie werden nur jetzt angezeigt.",
+				"confirm": "Ich habe sie gesichert",
+				"copy": "Kopieren",
+				"copied": "Kopiert",
+				"download": "Herunterladen",
+				"copyError": "Codes konnten nicht kopiert werden",
+				"remaining": "Noch {count} Wiederherstellungscodes übrig.",
+				"exhausted": "Keine Wiederherstellungscodes mehr — erzeuge einen neuen Satz.",
+				"warning": "Diese Codes werden nur einmal angezeigt. Bewahre sie getrennt von dem Gerät auf, mit dem du dich anmeldest — sie sind der einzige Weg zurück, wenn du deine App verlierst.",
+				"file": {
+					"heading": "Snapshot Wiederherstellungscodes",
+					"account": "Konto",
+					"instance": "Instanz",
+					"generated": "Erstellt",
+					"usage": "Jeder Code unten meldet dich einmal an, falls du keinen Zugriff mehr auf deine Authenticator-App hast.",
+					"warning": "Bewahre diese Datei privat auf. Ein neuer Satz macht alle Codes unten ungültig.",
+					"listHeading": "{count} Wiederherstellungscodes, einer pro Zeile, jeder genau einmal nutzbar"
+				}
+			},
+			"disableDialog": {
+				"title": "Zwei-Faktor-Authentifizierung deaktivieren",
+				"description": "Bestätige mit deinem aktuellen Passwort und einem Authentifizierungs- oder Wiederherstellungscode. Danach meldet dich dein Passwort allein an, deine Wiederherstellungscodes werden gelöscht und andere Geräte werden abgemeldet.",
+				"codeLabel": "Authentifizierungs- oder Wiederherstellungscode",
+				"codeHint": "Verwende den aktuellen Code aus deiner App oder einen unbenutzten Wiederherstellungscode."
+			},
+			"rotateDialog": {
+				"title": "Neue Wiederherstellungscodes",
+				"description": "Bestätige dich mit deinem Passwort und einem bestehenden zweiten Faktor. Deine bisherigen Codes verlieren ihre Gültigkeit, sobald der neue Satz erzeugt ist.",
+				"codeLabel": "Authentifizierungs- oder Wiederherstellungscode",
+				"codeHint": "Verwende den aktuellen Code aus deiner App oder einen unbenutzten Wiederherstellungscode."
+			},
+			"errors": {
+				"invalidCode": "Dieser Code ist ungültig. Prüfe deine Authenticator-App und versuche es erneut.",
+				"generic": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+				"labelRequired": "Gib dieser Authenticator-App einen Namen."
+			},
+			"defaultLabel": "Authenticator-App"
+		},
+		"shortener": {
+			"saved": "Shortener-Einstellungen gespeichert.",
+			"saveError": "Shortener-Einstellungen konnten nicht gespeichert werden."
+		}
+	},
+	"share": {
+		"noPreview": "Keine Vorschau verfügbar",
+		"details": {
+			"file": "Dateidetails",
+			"id": "Datei-ID",
+			"filename": "Dateiname",
+			"type": "Typ",
+			"dimensions": "Abmessungen",
+			"size": "Größe",
+			"uploaded": "Hochgeladen",
+			"integrity": "Integrität",
+			"checksum": "SHA-256"
+		},
+		"actions": {
+			"download": "Herunterladen",
+			"original": "Original"
+		},
+		"footer": {
+			"text": "Geteilt mit Snapshot, einem selbstgehosteten Tool für Medien-Uploads.",
+			"link": "Snapshot holen."
+		},
+		"notFound": {
+			"title": "Datei nicht gefunden",
+			"description": "Dieser Link ist ungültig oder die Datei wurde gelöscht."
+		},
+		"redirect": {
+			"title": "Du wirst weitergeleitet",
+			"countdown": "Das Ziel öffnet in {seconds}…",
+			"opening": "Das Ziel wird geöffnet…",
+			"destination": "Ziel",
+			"openNow": "Jetzt öffnen",
+			"fallback": "Es passiert nichts? Nutze den Button oben.",
+			"footer": "Gekürzt mit Snapshot"
+		}
+	}
+}

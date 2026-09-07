@@ -1,0 +1,77 @@
+name: snapshot
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-snapshot}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: ${POSTGRES_DB:-snapshot}
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U ${POSTGRES_USER:-snapshot} -d ${POSTGRES_DB:-snapshot}",
+        ]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+    networks: [internal]
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+    networks: [internal]
+
+  snapshot:
+    image: ghcr.io/walkaisa/snapshot:${SNAPSHOT_TAG:-latest}
+    build:
+      context: .
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      API_PORT: 3001
+      WEB_PORT: 3000
+      BASE_URL: ${BASE_URL:?set BASE_URL in .env}
+      DATABASE_URL: postgres://${POSTGRES_USER:-snapshot}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-snapshot}
+      REDIS_URL: redis://redis:6379
+      UPLOADS_DIR: /data/uploads
+      SESSION_SECRET: ${SESSION_SECRET:?set SESSION_SECRET in .env}
+      MFA_ENCRYPTION_KEY: ${MFA_ENCRYPTION_KEY:?set MFA_ENCRYPTION_KEY in .env}
+      SESSION_TTL_HOURS: ${SESSION_TTL_HOURS:-24}
+      SESSION_ABSOLUTE_TTL_HOURS: ${SESSION_ABSOLUTE_TTL_HOURS:-168}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      ARGON2_TIME_COST: ${ARGON2_TIME_COST:-3}
+      ARGON2_MEMORY_COST: ${ARGON2_MEMORY_COST:-65536}
+      ARGON2_PARALLELISM: ${ARGON2_PARALLELISM:-4}
+      API_INTERNAL_URL: http://127.0.0.1:3001
+    volumes:
+      - uploads:/data/uploads
+    ports:
+      - "${BIND_ADDRESS:-127.0.0.1}:3000:3000"
+      - "${BIND_ADDRESS:-127.0.0.1}:3001:3001"
+    networks: [internal]
+
+volumes:
+  uploads:
+  pg_data:
+  redis_data:
+
+networks:
+  internal:

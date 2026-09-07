@@ -1,0 +1,22 @@
+export const queryKeys = {
+	authState: ["auth", "state"] as const,
+	session: ["auth", "session"] as const,
+	sessions: ["auth", "sessions"] as const,
+	mfa: ["auth", "mfa"] as const,
+	meta: ["meta"] as const,
+	config: ["config"] as const,
+	apiKey: ["config", "api-key"] as const,
+	statsOverview: ["stats", "overview"] as const,
+	statsActivity: (days: number) => ["stats", "activity", { days }] as const,
+	statsBreakdown: ["stats", "breakdown"] as const,
+	uploads: (page: number, perPage: number) => ["uploads", "list", { page, perPage }] as const,
+	uploadsInfinite: (perPage: number) => ["uploads", "list", "infinite", { perPage }] as const,
+	upload: (id: string) => ["uploads", "item", id] as const,
+	uploadStats: (id: string) => ["uploads", "item", id, "stats"] as const,
+	links: (page: number, perPage: number) => ["links", "list", { page, perPage }] as const,
+	linksInfinite: (perPage: number, sort: string, order: string, search: string) =>
+		["links", "list", "infinite", { perPage, sort, order, search }] as const,
+	idAvailability: (id: string) => ["ids", "availability", id] as const,
+	auditInfinite: (filters: unknown) => ["audit", "list", "infinite", filters] as const,
+	auditSummary: (filters: unknown) => ["audit", "summary", filters] as const,
+};

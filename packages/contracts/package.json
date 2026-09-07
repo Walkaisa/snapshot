@@ -1,0 +1,40 @@
+{
+	"name": "@snapshot/contracts",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"description": "Shared Zod schemas and types — the single source of truth for the Snapshot API contract.",
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.mts",
+	"exports": {
+		".": {
+			"import": {
+				"types": "./dist/index.d.mts",
+				"default": "./dist/index.mjs"
+			},
+			"require": {
+				"types": "./dist/index.d.cts",
+				"default": "./dist/index.cjs"
+			}
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "tsdown",
+		"typecheck": "tsc --noEmit",
+		"test": "vitest run"
+	},
+	"dependencies": {
+		"zod": "4.5.4"
+	},
+	"devDependencies": {
+		"@snapshot/config": "workspace:*",
+		"@types/node": "26.4.0",
+		"tsdown": "0.22.14",
+		"typescript": "~5.9.3",
+		"vitest": "4.1.11"
+	}
+}

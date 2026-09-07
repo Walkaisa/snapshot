@@ -1,0 +1,102 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.5.11/schema.json",
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true
+	},
+	"files": {
+		"ignoreUnknown": true,
+		"includes": [
+			"**",
+			"!**/dist",
+			"!**/.next",
+			"!**/.turbo",
+			"!**/coverage",
+			"!**/.claude",
+			"!**/.agents",
+			"!**/skills-lock.json",
+			"!**/apps/api/drizzle",
+			"!**/*.css",
+			"!**/pnpm-lock.yaml"
+		]
+	},
+	"formatter": {
+		"enabled": true,
+		"indentStyle": "tab",
+		"indentWidth": 4,
+		"lineWidth": 140
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"preset": "recommended",
+			"nursery": {
+				"useSortedClasses": {
+					"level": "warn",
+					"options": {
+						"functions": ["cn", "clsx", "cva", "twMerge"]
+					}
+				}
+			}
+		}
+	},
+	"assist": {
+		"enabled": true,
+		"actions": {
+			"source": {
+				"organizeImports": "on"
+			}
+		}
+	},
+	"javascript": {
+		"parser": {
+			"unsafeParameterDecoratorsEnabled": true
+		},
+		"formatter": {
+			"quoteStyle": "double"
+		}
+	},
+	"overrides": [
+		{
+			"includes": ["docker/**"],
+			"linter": {
+				"rules": {
+					"suspicious": {
+						"noUndeclaredEnvVars": "off"
+					}
+				}
+			}
+		},
+		{
+			"includes": ["apps/api/**"],
+			"linter": {
+				"rules": {
+					"style": {
+						"useImportType": "off"
+					}
+				}
+			}
+		},
+		{
+			"includes": ["apps/web/src/components/ui/**"],
+			"linter": {
+				"rules": {
+					"a11y": {
+						"noLabelWithoutControl": "off",
+						"useFocusableInteractive": "off",
+						"useKeyWithClickEvents": "off",
+						"useSemanticElements": "off"
+					},
+					"security": {
+						"noDangerouslySetInnerHtml": "off"
+					},
+					"suspicious": {
+						"noArrayIndexKey": "off",
+						"noDocumentCookie": "off"
+					}
+				}
+			}
+		}
+	]
+}

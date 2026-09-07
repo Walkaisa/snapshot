@@ -1,0 +1,947 @@
+{
+	"app": {
+		"name": "Snapshot",
+		"tagline": "Self-hosted media uploads"
+	},
+	"nav": {
+		"groups": {
+			"content": "Content",
+			"settings": "Settings",
+			"integrations": "Integrations",
+			"account": "Account",
+			"system": "System"
+		},
+		"overview": "Overview",
+		"gallery": "Gallery",
+		"links": "Links",
+		"uploads": "Uploads",
+		"shortener": "Shortener",
+		"sharex": "ShareX",
+		"apiKey": "API key",
+		"profile": "Profile",
+		"security": "Security",
+		"appearance": "Appearance",
+		"breadcrumb": "Breadcrumb",
+		"rateLimit": "Rate limit",
+		"subtitle": {
+			"overview": "Your instance at a glance",
+			"gallery": "Browse everything you've uploaded",
+			"links": "Create and manage your short links",
+			"uploads": "How uploads are accepted, addressed and shared",
+			"shortener": "How short links are addressed",
+			"sharex": "Download your ShareX configuration",
+			"apiKey": "One key authenticates every upload client",
+			"profile": "Your username and how you appear on shared links",
+			"security": "Your password and where your account is signed in",
+			"appearance": "Theme and language",
+			"rateLimit": "Throttle writing API requests per client",
+			"audit": "Everything the instance recorded"
+		},
+		"audit": "Audit-Log"
+	},
+	"common": {
+		"language": "Language",
+		"logout": "Log out",
+		"loading": "Loading…",
+		"menu": "Menu",
+		"cancel": "Cancel",
+		"remove": "Remove",
+		"default": "default"
+	},
+	"overview": {
+		"cards": {
+			"version": "Version",
+			"versionUnknown": "N/A",
+			"uploads": "Uploads",
+			"links": "Short links",
+			"storage": "Storage used"
+		},
+		"recent": {
+			"title": "Recent activity",
+			"description": "The newest uploads and short links on this instance.",
+			"empty": "Nothing has happened yet.",
+			"visits": "{count, plural, =1 {# visit} other {# visits}}"
+		},
+		"error": "Could not load this data.",
+		"retry": "Retry",
+		"charts": {
+			"section": {
+				"title": "Activity",
+				"description": "Uploads, storage and views over the selected period."
+			},
+			"range": {
+				"label": "Time range",
+				"days": "{days} days"
+			},
+			"comparison": {
+				"none": "0 in the period before",
+				"unchanged": "unchanged from before",
+				"increase": "{percent} more than the period before",
+				"decrease": "{percent} less than the period before"
+			},
+			"uploads": {
+				"title": "Upload activity",
+				"description": "Files added per day.",
+				"series": "Uploads"
+			},
+			"storage": {
+				"title": "Storage used",
+				"description": "How much space your uploads take up over time.",
+				"series": "Stored"
+			},
+			"views": {
+				"title": "Views",
+				"description": "How often your uploads and short links were opened.",
+				"page": "Share page",
+				"raw": "Direct link",
+				"download": "Download",
+				"link": "Short link"
+			},
+			"formats": {
+				"title": "Storage by format",
+				"description": "Which file types fill the disk.",
+				"series": "Storage",
+				"files": "{count, plural, one {# file} other {# files}}",
+				"other": "Other",
+				"empty": "Nothing stored yet."
+			}
+		}
+	},
+	"gallery": {
+		"loadingMore": "Loading…",
+		"noPreview": "Preview not available",
+		"card": {
+			"open": "Open details for {filename}"
+		},
+		"empty": {
+			"title": "No uploads yet",
+			"description": "Upload one from here, or send files in through ShareX and the API.",
+			"cta": "Set up ShareX",
+			"upload": "Upload a file"
+		},
+		"details": {
+			"file": "File details",
+			"id": "File ID",
+			"type": "Type",
+			"dimensions": "Dimensions",
+			"size": "Size",
+			"uploaded": "Uploaded",
+			"integrity": "Integrity"
+		},
+		"views": {
+			"title": "Views",
+			"total": "Total",
+			"page": "Page",
+			"direct": "Direct",
+			"download": "Downloads",
+			"error": "View stats are unavailable."
+		},
+		"actions": {
+			"more": "More actions",
+			"details": "View details",
+			"copyLink": "Copy link",
+			"copyDirect": "Copy direct link",
+			"open": "Open",
+			"download": "Download",
+			"delete": "Delete",
+			"deleted": "File deleted.",
+			"deleteError": "Could not delete the file.",
+			"copyError": "Could not copy to the clipboard.",
+			"linkCopied": "Link copied to clipboard.",
+			"directCopied": "Direct link copied to clipboard."
+		},
+		"confirmDelete": {
+			"title": "Delete this file?",
+			"description": "{filename} will be permanently removed and its share link will stop working."
+		},
+		"count": "{count, plural, =0 {Nothing uploaded yet} =1 {# file} other {# files}}",
+		"upload": {
+			"action": "Upload",
+			"title": "Upload a file",
+			"description": "Images and video only — the same rules your upload clients follow.",
+			"submit": "Upload",
+			"submitting": "Uploading…",
+			"uploading": "Uploading",
+			"cancel": "Cancel",
+			"clear": "Remove the selected file",
+			"uploaded": "Uploaded as /{id}.",
+			"dropzone": {
+				"title": "Drop a file here, or browse",
+				"hint": "{types} · up to {limit}",
+				"loading": "Loading the upload rules…"
+			},
+			"fields": {
+				"slug": "Custom slug",
+				"slugPlaceholder": "optional",
+				"slugHint": "Leave empty to generate one."
+			},
+			"errors": {
+				"required": "Pick a file to upload",
+				"type": "That file type is not allowed here — Snapshot stores images and video.",
+				"size": "That file is larger than the {limit} limit.",
+				"empty": "That file is empty.",
+				"slug": "Use 3-64 letters, digits, hyphen or underscore",
+				"slugTaken": "That slug is already taken",
+				"generic": "Could not upload the file."
+			}
+		}
+	},
+	"audit": {
+		"actions": {
+			"auth": {
+				"setup": "Instance set up",
+				"sign_in": "Signed in",
+				"sign_in_mfa": "Second factor verified",
+				"sign_out": "Signed out",
+				"password_change": "Password changed",
+				"sessions_revoke": "Sessions revoked"
+			},
+			"mfa": {
+				"setup": "Two-factor enrolment started",
+				"setup_cancel": "Two-factor enrolment cancelled",
+				"enable": "Two-factor enabled",
+				"disable": "Two-factor disabled",
+				"recovery_codes_rotate": "Recovery codes regenerated"
+			},
+			"account": {
+				"username_change": "Username changed",
+				"preferences_update": "Preferences updated"
+			},
+			"config": {
+				"update": "Settings updated"
+			},
+			"api_key": {
+				"reveal": "API key revealed",
+				"rotate": "API key rotated"
+			},
+			"uploads": {
+				"create": "File uploaded",
+				"delete": "File deleted"
+			},
+			"links": {
+				"create": "Short link created",
+				"update": "Short link retargeted",
+				"delete": "Short link deleted"
+			},
+			"security": {
+				"unauthorized": "Unauthenticated request refused",
+				"api_key_rejected": "API key refused",
+				"csrf_rejected": "CSRF token refused",
+				"rate_limited": "Rate limit hit"
+			},
+			"system": {
+				"startup": "Instance started",
+				"uploads_reconciled": "Uploads reconciled",
+				"audit_pruned": "Audit-Log pruned",
+				"audit_overflow": "Audit entries dropped"
+			}
+		},
+		"categories": {
+			"auth": "Authentication",
+			"mfa": "Two-factor",
+			"account": "Account",
+			"config": "Settings",
+			"api_key": "API key",
+			"uploads": "Uploads",
+			"links": "Short links",
+			"security": "Security",
+			"system": "System"
+		},
+		"severities": {
+			"info": "Info",
+			"notice": "Notice",
+			"warning": "Warning",
+			"error": "Error",
+			"critical": "Critical"
+		},
+		"outcomes": {
+			"success": "Succeeded",
+			"failure": "Failed"
+		},
+		"actors": {
+			"dashboard": "Dashboard",
+			"api_key": "API key",
+			"system": "System",
+			"anonymous": "Anonymous"
+		},
+		"targets": {
+			"upload": "Upload",
+			"link": "Short link",
+			"config": "Settings",
+			"session": "Session",
+			"admin": "Account",
+			"api_key": "API key",
+			"instance": "Instance"
+		},
+		"fields": {
+			"filename": "File",
+			"mimeType": "Content type",
+			"size": "Size",
+			"sizeBytes": "Size in bytes",
+			"dimensions": "Dimensions",
+			"pageUrl": "Share page",
+			"slug": "Slug",
+			"shortUrl": "Short link",
+			"target": "Destination",
+			"host": "Destination host",
+			"theme": "Theme",
+			"locale": "Language",
+			"username": "Username",
+			"revoked": "Sessions revoked",
+			"imported": "Files imported",
+			"orphans": "Rows without a file",
+			"deleted": "Entries deleted",
+			"dropped": "Entries dropped",
+			"retentionDays": "Retention in days",
+			"limit": "Limit",
+			"windowSeconds": "Window in seconds",
+			"retryAfter": "Retry after (s)",
+			"version": "Version",
+			"environment": "Environment",
+			"node": "Node.js"
+		},
+		"search": "Search the Audit-Log",
+		"refresh": "Refresh",
+		"searchPlaceholder": "Search action, target, path…",
+		"count": "{count, plural, =0 {No events} =1 {# event} other {# events}}",
+		"retentionMenu": {
+			"title": "Keep entries for",
+			"label": "Kept {days, plural, =1 {# day} other {# days}}",
+			"option": "{days, plural, =1 {# day} other {# days}}",
+			"saved": "Audit entries are now kept for {days} days.",
+			"error": "Could not change the retention."
+		},
+		"oldest": "Oldest entry: {date}",
+		"loadMore": "Load more",
+		"loadingMore": "Loading…",
+		"range": {
+			"label": "Time range",
+			"options": {
+				"24": "24 h",
+				"168": "7 days",
+				"720": "30 days",
+				"0": "All"
+			}
+		},
+		"filters": {
+			"label": "Filter",
+			"reset": "Reset",
+			"severities": "Severity",
+			"categories": "Area",
+			"outcomes": "Outcome",
+			"actors": "Source"
+		},
+		"details": {
+			"occurredAt": "Timestamp",
+			"category": "Area",
+			"severity": "Severity",
+			"outcome": "Outcome",
+			"actor": "Source",
+			"target": "Target",
+			"ipAddress": "IP address",
+			"client": "Client",
+			"device": "{browser} on {os}",
+			"route": "Route",
+			"duration": "Duration",
+			"errorCode": "Error code",
+			"requestId": "Request ID",
+			"metadata": "Raw details",
+			"unknown": "Unknown",
+			"changed": "What changed"
+		},
+		"empty": {
+			"none": {
+				"title": "Nothing recorded yet",
+				"description": "Every sign-in, upload, setting change and refused request lands here."
+			},
+			"noMatches": {
+				"title": "Nothing matches",
+				"description": "No event fits these filters. Widen the time range or clear a filter."
+			}
+		}
+	},
+	"ids": {
+		"availability": {
+			"checking": "Checking availability…",
+			"available": "Slug is free",
+			"taken": {
+				"link": "Another short link already uses this slug",
+				"upload": "An upload already uses this id",
+				"reserved": "This slug is reserved by the dashboard"
+			}
+		}
+	},
+	"links": {
+		"loadMore": "Load more",
+		"loadingMore": "Loading…",
+		"columns": {
+			"visits": "Visits"
+		},
+		"create": {
+			"title": "Shorten a link",
+			"description": "Point a short, memorable slug at any http(s) address.",
+			"submit": "Shorten",
+			"submitting": "Shortening…",
+			"created": "Short link /{slug} created.",
+			"fields": {
+				"url": "Destination URL",
+				"urlPlaceholder": "https://example.com/a/very/long/link",
+				"slug": "Custom slug",
+				"slugPlaceholder": "optional",
+				"slugHint": "Leave empty to generate one."
+			},
+			"errors": {
+				"urlRequired": "Enter the URL you want to shorten",
+				"url": "Enter a full http:// or https:// URL",
+				"slug": "Use letters, digits, hyphen and underscore; start and end with a letter or digit",
+				"slugTaken": "That slug is already taken",
+				"generic": "Could not create the short link."
+			},
+			"action": "New short link",
+			"cancel": "Cancel"
+		},
+		"edit": {
+			"title": "Change destination",
+			"description": "Visitors of /{slug} will be sent to the new address from the next request on.",
+			"submit": "Save",
+			"saving": "Saving…",
+			"cancel": "Cancel",
+			"saved": "Destination updated.",
+			"fields": {
+				"url": "Destination URL"
+			},
+			"errors": {
+				"urlRequired": "Enter the URL you want to point at",
+				"url": "Enter a full http:// or https:// URL",
+				"generic": "Could not update the short link."
+			}
+		},
+		"actions": {
+			"more": "More actions",
+			"copy": "Copy short link",
+			"copied": "Short link copied to clipboard.",
+			"copyError": "Could not copy to the clipboard.",
+			"openTarget": "Open destination",
+			"edit": "Change destination",
+			"delete": "Delete",
+			"deleted": "Short link deleted.",
+			"deleteError": "Could not delete the short link."
+		},
+		"empty": {
+			"none": {
+				"title": "No short links yet",
+				"description": "Shorten a URL from here, or create one from any service through the API.",
+				"action": "Shorten a link"
+			},
+			"noMatches": {
+				"title": "Nothing matches",
+				"description": "No short link has that slug or destination. Try a shorter search."
+			}
+		},
+		"confirmDelete": {
+			"title": "Delete this short link?",
+			"description": "/{slug} will stop working immediately and its visit history is removed."
+		},
+		"list": {
+			"description": "{count, plural, =0 {Nothing shortened yet} =1 {# short link} other {# short links}}",
+			"search": "Search short links",
+			"searchPlaceholder": "Search slug or destination…",
+			"sort": {
+				"label": "Sort by",
+				"options": {
+					"newest": "Newest first",
+					"oldest": "Oldest first",
+					"visits": "Most visits",
+					"slug": "Slug A–Z",
+					"target": "Destination A–Z"
+				}
+			}
+		}
+	},
+	"notFound": {
+		"title": "Page not found",
+		"description": "The page you are looking for does not exist.",
+		"back": "Back to overview"
+	},
+	"auth": {
+		"setup": {
+			"title": "Welcome to Snapshot",
+			"description": "Create your administrator account to get started.",
+			"submit": "Create account",
+			"submitting": "Creating…"
+		},
+		"signIn": {
+			"title": "Sign in",
+			"description": "Enter your credentials to access the dashboard.",
+			"submit": "Sign in",
+			"submitting": "Signing in…"
+		},
+		"signOut": {
+			"action": "Sign out",
+			"loading": "Signing out…"
+		},
+		"fields": {
+			"username": "Username",
+			"password": "Password",
+			"confirmPassword": "Confirm password"
+		},
+		"password": {
+			"strength": "Strength",
+			"level": {
+				"weak": "Weak",
+				"fair": "Fair",
+				"good": "Good",
+				"strong": "Strong"
+			},
+			"requirement": {
+				"length": "At least 8 characters",
+				"lowercase": "A lowercase letter",
+				"uppercase": "An uppercase letter",
+				"number": "A number",
+				"symbol": "A symbol"
+			}
+		},
+		"errors": {
+			"username": "1–64 characters using letters, digits, dot, underscore or hyphen; start with a letter or digit",
+			"passwordShort": "Password must be at least 8 characters",
+			"passwordLong": "Password is too long",
+			"passwordMismatch": "Passwords do not match",
+			"required": "Required",
+			"invalidCredentials": "Invalid username or password",
+			"throttledCountdown": "Too many attempts — try again in {seconds}s",
+			"alreadyInitialized": "Setup has already been completed",
+			"generic": "Something went wrong. Please try again."
+		},
+		"mfa": {
+			"title": "Two-factor authentication",
+			"description": "Enter the code from your authenticator app to finish signing in.",
+			"hint": "6-digit code, refreshed every 30 seconds.",
+			"recoveryHint": "One of the recovery codes you saved when you turned two-factor on. Each one works once.",
+			"verify": "Verify",
+			"verifying": "Verifying…",
+			"or": "or",
+			"useRecoveryCode": "Use a recovery code",
+			"useAuthenticator": "Use your authenticator app",
+			"fields": {
+				"code": "Authentication code",
+				"recoveryCode": "Recovery code"
+			},
+			"errors": {
+				"invalidCode": "That code is not valid. Check your authenticator app and try again.",
+				"invalidRecoveryCode": "That recovery code is not valid or has already been used.",
+				"throttled": "Too many attempts. Wait a minute before trying again."
+			}
+		}
+	},
+	"settings": {
+		"saveBar": {
+			"unsaved": "You have unsaved changes",
+			"reset": "Reset",
+			"save": "Save changes",
+			"saving": "Saving…"
+		},
+		"ids": {
+			"units": {
+				"chars": "chars",
+				"times": "×"
+			},
+			"kinds": {
+				"upload": {
+					"title": "Slug generator",
+					"description": "How the slug that addresses an upload is generated.",
+					"lengthLabel": "Slug length",
+					"lengthHint": "The slug in a share link, 3–64 characters.",
+					"range": "Must be between 3 and 64"
+				},
+				"link": {
+					"title": "Slug generator",
+					"description": "How the slug of a generated short link is built.",
+					"lengthLabel": "Slug length",
+					"lengthHint": "Only for generated slugs, 3–64 characters. A custom slug may be any length.",
+					"range": "Must be between 3 and 64"
+				}
+			},
+			"alphabet": {
+				"mode": {
+					"title": "Composition",
+					"description": "Combine ready-made groups or type the alphabet yourself.",
+					"charsets": {
+						"title": "Predefined sets",
+						"description": "Tick the groups you want to combine."
+					},
+					"custom": {
+						"title": "Own characters",
+						"description": "Type the exact alphabet yourself."
+					}
+				},
+				"charsets": {
+					"title": "Character groups",
+					"description": "Every ticked group joins the alphabet in full.",
+					"lowercase": "Lowercase",
+					"uppercase": "Uppercase",
+					"digits": "Digits",
+					"symbols": "Symbols"
+				},
+				"custom": {
+					"title": "Custom alphabet",
+					"description": "Letters, digits, hyphen and underscore. Duplicates are ignored.",
+					"label": "Allowed characters",
+					"placeholder": "abcdefghjkmnpqrstuvwxyz23456789"
+				}
+			},
+			"minimums": {
+				"title": "Guaranteed characters",
+				"description": "How often a class has to appear in every generated id. Editable only while that class is part of the alphabet.",
+				"minDigits": {
+					"label": "Digits at least",
+					"hint": "Every id contains at least this many digits.",
+					"unavailable": "Add the digits to the alphabet to require them."
+				},
+				"minSymbols": {
+					"label": "Symbols at least",
+					"hint": "Every id contains at least this many symbols.",
+					"unavailable": "Add the symbols to the alphabet to require them."
+				}
+			},
+			"length": {
+				"title": "Length",
+				"description": "More characters means more possible ids — more headroom before two draws collide.",
+				"slider": "Length slider"
+			},
+			"capacity": {
+				"example": "Example",
+				"exampleCaption": "drawn from {count} characters",
+				"reroll": "Draw another example",
+				"impossible": "This combination cannot produce an id.",
+				"combinations": {
+					"label": "Possible ids",
+					"caption": "that many distinct ids exist"
+				},
+				"headroom": {
+					"label": "Headroom",
+					"caption": "ids before a draw repeats itself"
+				},
+				"entropy": "{bits} bit"
+			},
+			"errors": {
+				"alphabet": "Pick at least 8 distinct characters from A–Z, a–z, 0–9, hyphen or underscore",
+				"minRange": "Must be between 0 and 16",
+				"tooShort": "Must be at least {count} to fit the guaranteed characters"
+			}
+		},
+		"apiKey": {
+			"label": "API key",
+			"description": "One key for the whole instance — treat it like a password.",
+			"usage": "Clients send it as an <code>Authorization: Bearer</code> or <code>X-API-Key</code> header. Your ShareX config already carries it.",
+			"reveal": "Reveal key",
+			"hide": "Hide key",
+			"copy": "Copy key",
+			"revealError": "Could not reveal the key.",
+			"copyError": "Could not copy the key.",
+			"rotate": "Rotate key",
+			"rotateHint": "Rotating invalidates the current key immediately.",
+			"rotated": "API key rotated. Re-download your ShareX config and update any other client.",
+			"rotateError": "Could not rotate the key.",
+			"confirmTitle": "Rotate the API key?",
+			"confirmDescription": "The current key stops working right away. Every client using it — ShareX, scripts, anything else — has to be given the new one."
+		},
+		"sharex": {
+			"status": "ShareX endpoint",
+			"statusHint": "A ready-made ShareX target with your API key already filled in.",
+			"downloadHint": "The download always reflects your current API key.",
+			"download": "Download .sxcu"
+		},
+		"embed": {
+			"title": "Embeds",
+			"description": "How a shared upload unfurls in Discord and friends.",
+			"enabledHint": "Turned off, a shared link is served without preview tags.",
+			"configuration": "Configuration",
+			"configurationHint": "What every unfurl is built from.",
+			"previewHint": "How a shared upload looks.",
+			"preview": "Preview",
+			"disabledHint": "Previews are disabled — links unfurl without an embed.",
+			"variables": "Template variables",
+			"saved": "Embed settings saved.",
+			"saveError": "Could not save the embed settings.",
+			"fields": {
+				"enabled": "Enable embeds",
+				"provider": "Provider name",
+				"color": "Accent color",
+				"title": "Title template",
+				"descriptionTemplate": "Description template",
+				"locale": "Locale",
+				"timezone": "Timezone"
+			},
+			"select": {
+				"localePlaceholder": "Select locale",
+				"localeSearch": "Search locale...",
+				"timezonePlaceholder": "Select timezone",
+				"timezoneSearch": "Search timezone...",
+				"empty": "No matches found."
+			},
+			"errors": {
+				"providerRequired": "Provider name is required",
+				"providerLong": "Provider name is too long",
+				"color": "Enter a hex color like #5865F2",
+				"templateVariable": "Unknown variable: {name}",
+				"locale": "Enter a valid locale like en-US",
+				"timezone": "Enter a valid timezone like UTC"
+			}
+		},
+		"uploads": {
+			"saved": "Upload settings saved.",
+			"saveError": "Could not save the upload settings.",
+			"limits": {
+				"title": "Upload limits",
+				"description": "How large a single file may be, and how much space the instance may take up in total."
+			},
+			"types": {
+				"title": "Allowed file types",
+				"description": "Restrict uploads to specific extensions or MIME types."
+			},
+			"fields": {
+				"maxSize": "Max file size",
+				"maxSizeHint": "Uploads above this size are rejected.",
+				"restrictExtensions": "Restrict extensions",
+				"restrictHint": "When off, the built-in default list is used.",
+				"extensions": "Extensions",
+				"extensionPlaceholder": "Add extension (e.g. .png)",
+				"extensionsEmpty": "No extensions added yet.",
+				"restrictMimeTypes": "Restrict MIME types",
+				"restrictMimeHint": "When off, the built-in default list is used.",
+				"mimeTypes": "MIME types",
+				"mimePlaceholder": "Add MIME type (e.g. image/png)",
+				"mimeEmpty": "No MIME types added yet.",
+				"maxStorage": "Storage limit",
+				"maxStorageHint": "Once it is reached, further uploads are refused.",
+				"restrictStorage": "Cap total storage",
+				"restrictStorageHint": "Turned off, only the free disk limits you."
+			},
+			"errors": {
+				"sizeMin": "Must be at least 1 MB",
+				"needExtension": "Add at least one extension or turn the restriction off",
+				"needMime": "Add at least one MIME type or turn the restriction off",
+				"storageMin": "Must be greater than 0"
+			}
+		},
+		"rateLimit": {
+			"title": "Rate limit",
+			"description": "How many writing requests a client may make per window — uploads and new short links.",
+			"appliesLive": "Changes apply live to new requests.",
+			"saved": "Rate limit saved.",
+			"saveError": "Could not save the rate limit.",
+			"fields": {
+				"enabled": "Enable rate limiting",
+				"requests": "Requests",
+				"window": "Window (seconds)"
+			},
+			"errors": {
+				"min": "Must be at least 1"
+			}
+		},
+		"password": {
+			"title": "Change password",
+			"description": "Update the administrator password.",
+			"submit": "Update password",
+			"submitting": "Updating…",
+			"saved": "Password updated.",
+			"signsOutOthers": "Changing your password signs out all other sessions.",
+			"fields": {
+				"current": "Current password",
+				"new": "New password",
+				"confirm": "Confirm new password"
+			},
+			"errors": {
+				"required": "Required",
+				"short": "Password must be at least 12 characters",
+				"long": "Password is too long",
+				"mismatch": "Passwords do not match",
+				"currentWrong": "Current password is incorrect",
+				"generic": "Something went wrong. Please try again."
+			}
+		},
+		"sessions": {
+			"title": "Signed-in devices",
+			"description": "{count, plural, =1 {There is currently # signed-in browser session. Review the device below and sign it out if you do not recognize it.} other {There are currently # signed-in browser sessions. Review the devices below and sign out any you do not recognize.}}",
+			"current": "This device",
+			"active": "Signed in",
+			"device": "{browser} on {os}",
+			"lastSeen": "Last active {time}",
+			"unknownIp": "Unknown IP",
+			"unknownAgent": "Unknown device",
+			"columns": {
+				"device": "Device",
+				"ip": "IP address",
+				"lastActive": "Last active",
+				"status": "Status",
+				"actions": "Actions"
+			},
+			"revokeHint": "Sign out every session except this one.",
+			"revokeOthers": "Sign out others",
+			"revokeSession": "Sign out session",
+			"revoked": "{count, plural, =1 {# session signed out} other {# sessions signed out}}",
+			"revokeError": "Could not revoke the sessions.",
+			"confirmTitle": "Sign out other sessions?",
+			"confirmDescription": "All other devices will need to sign in again.",
+			"confirmOneTitle": "Sign out this session?",
+			"confirmOneDescription": "The device will need to sign in again."
+		},
+		"profile": {
+			"title": "Username",
+			"description": "Change the username used to sign in and shown in your link previews.",
+			"submit": "Update username",
+			"submitting": "Updating…",
+			"saved": "Username updated.",
+			"fields": {
+				"username": "Username",
+				"usernameHint": "Used to sign in and shown in your link previews.",
+				"currentPassword": "Current password"
+			},
+			"errors": {
+				"username": "1–64 characters using letters, digits, dot, underscore or hyphen; start with a letter or digit",
+				"currentRequired": "Required",
+				"currentWrong": "Current password is incorrect",
+				"generic": "Something went wrong. Please try again."
+			}
+		},
+		"appearance": {
+			"saveError": "Could not save your preference.",
+			"theme": {
+				"title": "Theme",
+				"description": "Choose how the dashboard looks. System follows your operating system.",
+				"options": {
+					"system": "System",
+					"light": "Light",
+					"dark": "Dark"
+				}
+			},
+			"language": {
+				"title": "Language",
+				"description": "Language used across the dashboard.",
+				"options": {
+					"system": "System"
+				},
+				"select": {
+					"placeholder": "Select language",
+					"searchPlaceholder": "Search language...",
+					"empty": "No matches found."
+				}
+			}
+		},
+		"mfa": {
+			"title": "Two-factor authentication",
+			"description": "Require a time-based code from an authenticator app in addition to your password.",
+			"passwordLabel": "Current password",
+			"passwordHint": "Confirm it is you before changing a sign-in factor.",
+			"enabled": "Two-factor authentication is on",
+			"disabled": "Two-factor authentication is off",
+			"status": {
+				"title": "Authenticator app",
+				"enabled": "Active",
+				"disabled": "Not active",
+				"addedOn": "Added {date}",
+				"hint": "Your password alone signs you in."
+			},
+			"actions": {
+				"enable": "Turn on",
+				"disable": "Turn off",
+				"rotateCodes": "New recovery codes",
+				"cancel": "Cancel"
+			},
+			"enroll": {
+				"title": "Turn on two-factor authentication",
+				"description": "Scan the QR code with your authenticator app, then confirm the code it shows.",
+				"start": "Continue",
+				"confirm": "Turn on",
+				"codeLabel": "Code from your app",
+				"qrLabel": "QR code for your authenticator app",
+				"scanHint": "Scan this with Aegis, 1Password, Bitwarden, Google Authenticator or any other TOTP app.",
+				"secretLabel": "Or enter this key by hand",
+				"copySecret": "Copy key",
+				"copyError": "Could not copy the key",
+				"labelLabel": "App Name",
+				"labelPlaceholder": "Bitwarden",
+				"labelHint": "So you recognise it later.",
+				"labelDefault": "Authenticator app"
+			},
+			"recovery": {
+				"title": "Save your recovery codes",
+				"description": "Each code signs you in once if you lose your authenticator app. They are shown only now.",
+				"confirm": "I have saved them",
+				"copy": "Copy",
+				"copied": "Copied",
+				"download": "Download",
+				"copyError": "Could not copy the codes",
+				"remaining": "{count} recovery codes left.",
+				"exhausted": "No recovery codes left — generate a new set.",
+				"warning": "These codes are shown once. Store them outside the device you sign in from — they are the only way back in if you lose your app.",
+				"file": {
+					"heading": "Snapshot recovery codes",
+					"account": "Account",
+					"instance": "Instance",
+					"generated": "Generated",
+					"usage": "Each code below signs you in once if you lose access to your authenticator app.",
+					"warning": "Keep this file private. Generating a new set makes every code below stop working.",
+					"listHeading": "{count} recovery codes, one per line, each usable once"
+				}
+			},
+			"disableDialog": {
+				"title": "Turn off two-factor authentication",
+				"description": "Confirm with your current password and an authentication or recovery code. Your password alone will sign you in again, your recovery codes are deleted, and other devices are signed out.",
+				"codeLabel": "Authentication or recovery code",
+				"codeHint": "Use the current code from your app or one unused recovery code."
+			},
+			"rotateDialog": {
+				"title": "New recovery codes",
+				"description": "Confirm with your password and an existing second factor. The codes you have now stop working as soon as the new set is issued.",
+				"codeLabel": "Authentication or recovery code",
+				"codeHint": "Use the current code from your app or one unused recovery code."
+			},
+			"errors": {
+				"invalidCode": "That code is not valid. Check your authenticator app and try again.",
+				"generic": "Something went wrong. Please try again.",
+				"labelRequired": "Give this authenticator a name."
+			},
+			"defaultLabel": "Authenticator app"
+		},
+		"shortener": {
+			"saved": "Shortener settings saved.",
+			"saveError": "Could not save the shortener settings."
+		}
+	},
+	"share": {
+		"noPreview": "Preview not available",
+		"details": {
+			"file": "File details",
+			"id": "File ID",
+			"filename": "Filename",
+			"type": "Type",
+			"dimensions": "Dimensions",
+			"size": "Size",
+			"uploaded": "Uploaded",
+			"integrity": "Integrity",
+			"checksum": "SHA-256"
+		},
+		"actions": {
+			"download": "Download",
+			"original": "Original"
+		},
+		"footer": {
+			"text": "Shared with Snapshot, a self-hosted media upload tool.",
+			"link": "Get Snapshot."
+		},
+		"notFound": {
+			"title": "File not found",
+			"description": "This link is invalid or the file has been deleted."
+		},
+		"redirect": {
+			"title": "Taking you there",
+			"countdown": "Opening the destination in {seconds}…",
+			"opening": "Opening the destination…",
+			"destination": "Destination",
+			"openNow": "Open now",
+			"fallback": "Nothing happening? Use the button above.",
+			"footer": "Shortened with Snapshot"
+		}
+	}
+}
