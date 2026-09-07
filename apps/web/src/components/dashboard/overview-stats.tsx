@@ -1,11 +1,12 @@
 "use client";
 
-import { GitBranch, HardDrive, Link2, Package } from "lucide-react";
+import { HardDrive, Link2, Package } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { useOverview } from "@/hooks/use-dashboard";
 import { DashboardError } from "./dashboard-error";
 import { StatCard, StatCardSkeleton } from "./stat-card";
+import { VersionCard } from "./version-card";
 
 export function OverviewStats() {
 	const t = useTranslations("overview");
@@ -32,7 +33,7 @@ export function OverviewStats() {
 			<StatCard icon={Package} label={t("cards.uploads")} value={uploads.count} />
 			<StatCard icon={Link2} label={t("cards.links")} value={links.count} />
 			<StatCard icon={HardDrive} label={t("cards.storage")} value={uploads.totalSizeHuman} />
-			<StatCard icon={GitBranch} label={t("cards.version")} value={version.current ?? t("cards.versionUnknown")} />
+			<VersionCard version={version} />
 		</div>
 	);
 }

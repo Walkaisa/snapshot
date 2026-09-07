@@ -48,6 +48,14 @@
 		"remove": "Entfernen",
 		"default": "Standard"
 	},
+	"update": {
+		"title": "Update verfügbar",
+		"description": "Snapshot {latest} ist erschienen. Diese Instanz läuft auf {current}.",
+		"upToDate": "Auf dem neuesten Stand",
+		"available": "{latest} verfügbar",
+		"release": "Release-Notes",
+		"dismiss": "Bis zur nächsten Version ausblenden"
+	},
 	"overview": {
 		"cards": {
 			"version": "Version",

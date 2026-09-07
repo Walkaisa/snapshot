@@ -1,4 +1,4 @@
-import type { SessionData } from "@snapshot/contracts";
+import type { ProjectMeta, SessionData } from "@snapshot/contracts";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import type { ReactNode } from "react";
 
@@ -6,6 +6,7 @@ import { AppSidebar } from "@/components/layout/app-sidebar";
 import { PageHeader } from "@/components/layout/page-header";
 import { PreferencesSync } from "@/components/layout/preferences-sync";
 import { TopBar } from "@/components/layout/top-bar";
+import { UpdateNotice } from "@/components/layout/update-notice";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { getUserLocaleChoice } from "@/i18n/locale";
 import { serverApi } from "@/lib/api/server";
@@ -21,6 +22,10 @@ export default async function DashboardLayout({ children }: { children: ReactNod
 			queryKey: queryKeys.session,
 			queryFn: () => serverApi<SessionData>("/api/auth/session"),
 		}),
+		queryClient.prefetchQuery({
+			queryKey: queryKeys.meta,
+			queryFn: () => serverApi<ProjectMeta>("/api/meta"),
+		}),
 	]);
 
 	return (
@@ -30,6 +35,7 @@ export default async function DashboardLayout({ children }: { children: ReactNod
 				<SidebarInset>
 					<TopBar />
 					<div className="mx-auto w-full max-w-6xl flex-1 p-4 md:p-6 lg:p-8">
+						<UpdateNotice />
 						<PageHeader />
 						{children}
 					</div>

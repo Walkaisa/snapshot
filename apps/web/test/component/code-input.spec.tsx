@@ -30,11 +30,10 @@ function Harness({
 
 function renderInput(props: Partial<Parameters<typeof Harness>[0]> = {}) {
 	const onChange = props.onChange ?? vi.fn();
-	const { container } = render(<Harness {...props} onChange={onChange} />);
+	render(<Harness {...props} onChange={onChange} />);
 
 	return {
 		input: screen.getByLabelText("Code") as HTMLInputElement,
-		slots: container.querySelectorAll("[data-slot='input-otp-slot']"),
 		onChange,
 	};
 }
@@ -45,22 +44,22 @@ function fillLikePasswordManager(input: HTMLInputElement, code: string): void {
 }
 
 describe("CodeInput", () => {
-	it("is one input behind six slots", () => {
-		const { input, slots } = renderInput();
+	it("is a plain text input a password manager can fill", () => {
+		const { input } = renderInput();
 
 		expect(input.tagName).toBe("INPUT");
 		expect(input.autocomplete).toBe("one-time-code");
 		expect(input.inputMode).toBe("numeric");
-		expect(slots).toHaveLength(6);
+		expect(input.name).toBe("one-time-code");
 	});
 
-	it("paints each digit into its own slot", async () => {
+	it("shows the digits as they are typed", async () => {
 		const user = userEvent.setup();
-		const { input, slots } = renderInput();
+		const { input } = renderInput();
 
 		await user.type(input, "123");
 
-		expect([...slots].map((slot) => slot.textContent)).toEqual(["1", "2", "3", "", "", ""]);
+		expect(input.value).toBe("123");
 	});
 
 	it("keeps only digits", async () => {
@@ -115,12 +114,11 @@ describe("CodeInput", () => {
 		expect(onComplete).not.toHaveBeenCalled();
 	});
 
-	it("marks itself invalid for assistive tech, and every slot for the eye", () => {
-		const { input, slots } = renderInput({ invalid: true, describedBy: "code-error" });
+	it("marks itself invalid for assistive tech", () => {
+		const { input } = renderInput({ invalid: true, describedBy: "code-error" });
 
 		expect(input).toHaveAttribute("aria-invalid", "true");
 		expect(input).toHaveAttribute("aria-describedby", "code-error");
-		expect([...slots].every((slot) => slot.getAttribute("aria-invalid") === "true")).toBe(true);
 	});
 
 	it("adopts a value a password manager wrote straight onto the input", async () => {

@@ -48,6 +48,14 @@
 		"remove": "Remove",
 		"default": "default"
 	},
+	"update": {
+		"title": "Update available",
+		"description": "Snapshot {latest} has been released. This instance runs {current}.",
+		"upToDate": "Up to date",
+		"available": "{latest} available",
+		"release": "Release notes",
+		"dismiss": "Dismiss until the next release"
+	},
 	"overview": {
 		"cards": {
 			"version": "Version",

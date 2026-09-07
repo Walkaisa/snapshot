@@ -630,49 +630,43 @@ main.ts · bootstrap.ts · app.module.ts
   countdown from `ApiError.retryAfter`.
   - **`SignInForm` owns the whole sign-in card, including its `AuthCard`**, because the
     second-factor step needs a different title. `useSignIn` seeds the session cache only when
-    `mfaRequired` is false; `MfaChallengeForm` takes over otherwise. Both `signIn` and
-    `verifySignInMfa` push the returned token through `setCsrfToken` — the API regenerated
-    the session, so the client's cached token is stale and the 403-retry would otherwise cost
-    a round trip.
+    `mfaRequired` is false; `MfaChallengeForm` takes over otherwise.
+  - **Every response that carries a `csrfToken` pushes it through `setCsrfToken`** — `signIn`,
+    `verifySignInMfa`, `setupAdmin` and `fetchSession` in `lib/api/auth.ts`. The API regenerates
+    the session on login and setup (Passport's `logIn` alone does), so the client's cached token
+    is stale the moment the response lands. `setupAdmin` used to drop it: the first mutation
+    after first-run setup then 403'd, `clientApi` silently re-fetched a token and retried, and
+    the operator was left with a `security.csrf_rejected` warning in the audit log for a flow
+    that never failed. The 403-retry is a safety net for a genuinely rotated token, **not** the
+    way a known-new token reaches the client — a route that returns one and ignores it is a bug,
+    and `test/unit/api-csrf.spec.ts` pins that.
+  - **The one-time code control is `components/auth/code-input.tsx`, and it is one plain
+    `Input`.** There is no segmented slot control and **no `input-otp` dependency** — it was
+    removed because the trick that makes it look like six boxes is what broke autofill: the
+    library overlays a single transparent `<input>` on a row of `<div>`s, and both browser
+    autofill and password managers routinely mis-target or mis-measure that. A normal centred,
+    `font-mono tracking-widest` text input with `autoComplete="one-time-code"` and
+    `inputMode="numeric"` is filled correctly by everything. Do not reintroduce a slot control
+    to make it look nicer. Two sizes: `default` (`h-9`, matching the name `Input` beside it in
+    the enrolment dialog) and `lg` (`h-12 text-xl`) for the sign-in card, where the code is the
+    only field.
   - **`CodeInput` owns completion, and adopts fills it did not see.** A password manager writes
     the code by setting `input.value` directly; React's value tracker treats that as "no change"
-    and swallows the event, so the slots stayed empty while Bitwarden happily reported a fill.
+    and swallows the event, so the field stayed empty while Bitwarden happily reported a fill.
     A native `input`/`change` listener on the element reads the DOM value in a microtask and
-    pushes it through `onChange` when it disagrees with state. Because that path bypasses
-    `input-otp`'s own `onComplete`, completion is **not** delegated to the library: an effect on
-    `value` fires it once when the code becomes full and re-arms when it shrinks. Never pass
-    `onComplete` to `InputOTP` as well, or a typed code submits twice.
-  - **The one-time code control is `components/auth/code-input.tsx`** — `input-otp` behind
-    `components/ui/input-otp.tsx`, six slots, `size-9` so the row is exactly as tall as the
-    `h-9` name `Input` sitting next to it in the enrolment dialog. Two sizes: `default` there,
-    `lg` (`size-12`) for the sign-in card where the code is the only field.
-  - **The row is `w-full` and the slots are `min-w-0 flex-1`, so the slots always cover the
-    container exactly.** `input-otp` overlays one `<input>` at `inset: 0` of its container, so
-    every pixel of container the slots do not cover is invisible dead space that still takes a
-    click and shows a caret. Do not invert that by shrink-wrapping the container to fixed-width
-    slots — two separate things block it: `Field`'s vertical variant carries `*:w-full`, and a
-    variant utility outranks a plain `w-fit` on a direct child; and `min-width: 0` on a flex
-    item collapses its flex container's *intrinsic* width, so "container shrink-wraps the slots"
-    and "slots can shrink" cannot both hold. Filling a definite width satisfies the invariant at
-    every size with nothing to keep in step: only the **height** is fixed (`h-9`, matching the
-    `Input` beside it in the enrolment dialog; `h-12` for `lg`). The boxes are rectangular on
-    purpose, and a narrow viewport narrows them rather than overflowing the card.
-    `InputOTPSlot`'s base is `h-9 w-9`, not the registry's `size-9`, because `tailwind-merge`
-    does not resolve `size-*` against a later `h-*` — with `size-9` the `lg` height would come
-    down to stylesheet order.
+    pushes it through `onChange` when it disagrees with state — keep it even though the control
+    is now a plain input, because the tracker problem is React's, not the library's. Completion
+    is an effect on `value`: it fires `onComplete` once when the code becomes full and re-arms
+    when it shrinks, so a fill and a typed code behave identically.
   - **`Button` is `whitespace-nowrap`, so a long localized label silently widens a grid form.**
     `MfaChallengeForm` is a `grid`; a nowrap child's min-content size floors the track, and the
     German "Stattdessen Wiederherstellungscode verwenden" pushed that track 8px past the card's
     padding box — every sibling, the code row included, inherited the overflow, which is what
-    made the OTP row look like it was eating the card padding. The recovery-code action is an
+    made the code field look like it was eating the card padding. The recovery-code action is an
     `outline` button with `whitespace-normal max-w-full h-auto`, centred under an "or" rule, so
     it wraps rather than dictating the form's width. The rule's label sits on `bg-card`, not
     `FieldSeparator`'s `bg-background` — the two tokens are the same colour in light mode and
     differ in dark, so `bg-background` would punch a darker notch through the line inside a card.
-  - **`pushPasswordManagerStrategy="none"` stays set.** The library's default mitigation widens
-    the real input by 40px whenever it believes a password manager is present — a guess that
-    false-positives on any layout whose slots reach the container's right edge — and that
-    overflowed the enrolment dialog.
   - **The enrolment dialog does not submit itself when the sixth digit lands.** The name field
     sits beside the code and is still editable at that point, so a complete code arms the
     button rather than pressing it. `MfaChallengeForm` *does* pass `onComplete` — there the
@@ -682,11 +676,13 @@ main.ts · bootstrap.ts · app.module.ts
     downloaded file right-aligns them so they line up in a monospace viewer, and states the
     count and "one per line" above the block. `test/component/recovery-code-list.spec.tsx`
     reads the generated Blob back and asserts that shape.
-  - **The digit rules are `input-otp` props, not a hand-written change handler.**
-    `pattern={REGEXP_ONLY_DIGITS}` drops a non-digit keystroke and `maxLength` caps the length,
-    but `pasteTransformer` is the one that is easy to miss: it strips the separators out of a
-    pasted `123 456` *before* the pattern is tested, and without it the paste is rejected whole
-    — `123 456` does not match a digits-only pattern.
+  - **One sanitizer owns the digit rules**, and it runs on the way *in*: `digitsOnly` strips
+    every non-digit and slices to `CODE_LENGTH`, so a typed letter, a pasted `123 456` and a
+    manager's padded fill all land as the same six digits. It fires `onChange` only when the
+    result actually differs, or a rejected keystroke would re-render for nothing; React restores
+    the DOM value from state either way. There is deliberately **no `maxLength`** — it constrains
+    typing, which the slice already does, and browsers apply it to autofill too, which would
+    truncate a padded fill to five digits.
   - **`MfaCard` is one panel in both states**, not a table — there is exactly one authenticator,
     so a list with a single row is noise. The same bordered block carries the icon, the app's
     name (or "Authenticator app" when off), an active/inactive badge and a secondary line
@@ -737,6 +733,41 @@ main.ts · bootstrap.ts · app.module.ts
     weak-to-strong. `PasswordStrength` animates width and colour together; the bar itself is
     `aria-hidden` and the live text carries the meaning. `lib/password.ts` takes its length
     rule from `PASSWORD_MIN_LENGTH` in contracts — never hard-code the number again.
+- **Version status and update notice are two surfaces, and they answer different questions.**
+  The overview's **version card** (`components/dashboard/version-card.tsx`) always states where
+  the instance stands — the number, plus a hint reading either "up to date" (`--outcome-success`)
+  or "{latest} available" (`--primary`). It is fed the `version` block the overview payload
+  already carries, so it stays one query and one card. "No news" is a real answer an operator
+  wants: a card that only speaks up when something is wrong leaves you unable to tell *checked
+  and fine* from *never checked*. Which is why the hint is **omitted entirely when `latest` is
+  null** — a failed GitHub check, or any non-production build — rather than defaulting to "up to
+  date", and why the notice below is a separate thing rather than the card growing an alarm.
+  Pass `undefined` for that case, not an element that renders `null`: `StatCard` tests the prop's
+  truthiness, so an always-truthy element would leave an empty 8px hint row on every card.
+- **The update notice is dashboard chrome, not an overview widget.**
+  `components/layout/update-notice.tsx` sits in the `(dashboard)` layout above `PageHeader`, so
+  every page carries it, mobile included — the sidebar footer would have hidden it behind the
+  menu sheet on a phone. It renders **only when an update is available**: a permanent "you are
+  current" bar on every page is noise, and that state is the version card's job. It reads `GET /api/meta` (`hooks/use-meta.ts`, `queryKeys.meta`,
+  prefetched by the layout alongside the session) rather than `GET /api/stats/overview`: the
+  overview payload also carries `version`, but pulling lifetime totals on every page to learn a
+  version number is not a trade worth making. That endpoint is `@Public()` and stays that way —
+  it is the "Snapshot is running" identity route; the notice is behind the auth gate because the
+  layout is, not because the data is secret. The link is built from the response's own
+  `repository` (`…/releases/latest`), so the repository URL keeps living in the API's
+  `common/constants.ts` and is never restated in the web app.
+  - **It renders nothing outside production.** `VersionService` reports `current: "development"`
+    and `updateAvailable: false` unless `isProduction`, and the version is stamped into the image
+    as `APP_VERSION` — so a dev server never shows the banner, and that is the design, not a bug
+    to work around by faking a version locally.
+  - **Dismissal is per-version and per-browser** — `localStorage["snapshot.update-dismissed"]`
+    holds the version that was dismissed, so the notice returns on the *next* release rather than
+    being silenced forever. It is the one piece of browser-persisted UI state in the app; every
+    other preference is a DB-backed account setting. Both the read and the write are
+    `try`/`catch`ed (a locked-down browser throws on access), and the read happens in an effect
+    with the notice rendering `null` until it has run — reading storage during render would make
+    the server's markup and the client's first pass disagree.
+
 - **The masthead height lives in three places** — the mobile bar and `SidebarHeader` in
   `app-sidebar.tsx` and the `<header>` in `top-bar.tsx` (currently `h-16`). They sit
   side by side, so all three must move together or the bottom borders step where the

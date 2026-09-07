@@ -17,12 +17,18 @@ export function fetchAuthState(): Promise<AuthState> {
 	return clientApi<AuthState>("/api/auth/state");
 }
 
-export function fetchSession(): Promise<SessionData> {
-	return clientApi<SessionData>("/api/auth/session");
+export async function fetchSession(): Promise<SessionData> {
+	const session = await clientApi<SessionData>("/api/auth/session");
+	setCsrfToken(session.csrfToken);
+
+	return session;
 }
 
-export function setupAdmin(input: SetupRequest): Promise<SessionData> {
-	return clientApi<SessionData>("/api/auth/setup", { method: "POST", body: JSON.stringify(input) });
+export async function setupAdmin(input: SetupRequest): Promise<SessionData> {
+	const session = await clientApi<SessionData>("/api/auth/setup", { method: "POST", body: JSON.stringify(input) });
+	setCsrfToken(session.csrfToken);
+
+	return session;
 }
 
 export async function signIn(input: LoginRequest): Promise<SignInResult> {

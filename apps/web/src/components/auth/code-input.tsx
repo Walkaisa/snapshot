@@ -1,19 +1,20 @@
 "use client";
 
-import { REGEXP_ONLY_DIGITS } from "input-otp";
 import { useEffect, useRef } from "react";
 
-import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
+import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
 export const CODE_LENGTH = 6;
 
-const SLOT_HEIGHT = {
+const SIZES = {
 	default: "h-9",
 	lg: "h-12 text-xl",
 };
 
-const SLOTS = Array.from({ length: CODE_LENGTH }, (_, index) => index);
+function digitsOnly(value: string): string {
+	return value.replaceAll(/\D/g, "").slice(0, CODE_LENGTH);
+}
 
 export function CodeInput({
 	id,
@@ -35,7 +36,7 @@ export function CodeInput({
 	invalid?: boolean;
 	describedBy?: string;
 	autoFocus?: boolean;
-	size?: keyof typeof SLOT_HEIGHT;
+	size?: keyof typeof SIZES;
 	className?: string;
 }) {
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -52,7 +53,7 @@ export function CodeInput({
 
 		function adoptExternalFill(): void {
 			queueMicrotask(() => {
-				const filled = (input?.value ?? "").replaceAll(/\D/g, "").slice(0, CODE_LENGTH);
+				const filled = digitsOnly(input?.value ?? "");
 
 				if (filled !== latest.current.value) {
 					latest.current.onChange(filled);
@@ -82,33 +83,27 @@ export function CodeInput({
 	}, [value, onComplete]);
 
 	return (
-		<InputOTP
+		<Input
 			ref={inputRef}
 			id={id}
 			name="one-time-code"
-			maxLength={CODE_LENGTH}
 			value={value}
-			onChange={onChange}
+			onChange={(event) => {
+				const next = digitsOnly(event.target.value);
+
+				if (next !== value) {
+					onChange(next);
+				}
+			}}
 			disabled={disabled}
 			autoFocus={autoFocus}
 			autoComplete="one-time-code"
-			pattern={REGEXP_ONLY_DIGITS}
-			pasteTransformer={(pasted) => pasted.replaceAll(/\D/g, "")}
-			pushPasswordManagerStrategy="none"
+			autoCorrect="off"
+			spellCheck={false}
+			inputMode="numeric"
 			aria-invalid={invalid}
 			aria-describedby={describedBy}
-			containerClassName={cn("w-full", className)}
-		>
-			<InputOTPGroup className="w-full">
-				{SLOTS.map((index) => (
-					<InputOTPSlot
-						key={index}
-						index={index}
-						aria-invalid={invalid}
-						className={cn("min-w-0 flex-1 font-mono tabular-nums", SLOT_HEIGHT[size])}
-					/>
-				))}
-			</InputOTPGroup>
-		</InputOTP>
+			className={cn("text-center font-mono tabular-nums tracking-widest", SIZES[size], className)}
+		/>
 	);
 }
